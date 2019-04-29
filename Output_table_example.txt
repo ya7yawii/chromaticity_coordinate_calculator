@@ -1,0 +1,8 @@
+Label	x	y
+Sample 1	0.3865	0.2173
+Sample 2	0.4353	0.2417
+Sample 3	0.4957	0.2793
+Sample 4	0.5594	0.2913
+Sample 5	0.2951	0.4207
+Sample 6	0.6175	0.3825
+Sample 7	0.2915	0.3024
