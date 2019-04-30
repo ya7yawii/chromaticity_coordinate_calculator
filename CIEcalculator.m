@@ -2,7 +2,7 @@ function varargout = CIEcalculator(varargin)
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 % Required files for execution: CIEcalculator.m, CIEcalculator.fig,
-% xFit_1931.m, yFit_1931.m, zFit_1931.m, CIExy1931.jpg and instructions.png
+% xFit_1931.m, yFit_1931.m, zFit_1931.m, stepfunction.m, CIExy1931.jpg and instructions.png
 % Usage: Calculate CIE coordinates and plot them in a CIE diagram. 
 % Target System: Windows 
 % Interface: Graphical user interfaces (GUIs) 
@@ -14,11 +14,11 @@ function varargout = CIEcalculator(varargin)
 % version  = 1.0 
 % maintainer  = "ya7yawii@yahoo.fr" 
 % status  = "Prototype" 
-% date  = "29-04-2019"
+% date  = "01-05-2019"
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Begin initialization code - DO NOT EDIT
-gui_Singleton = 0;
+gui_Singleton = 1;
 gui_State = struct('gui_Name',       mfilename, ...
                    'gui_Singleton',  gui_Singleton, ...
                    'gui_OpeningFcn', @CIEcalculator_OpeningFcn, ...
@@ -124,14 +124,6 @@ function varargout = CIEcalculator_OutputFcn(~, ~, handles)
 % Get default command line output from handles structure
 varargout{1} = handles.output;
 
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function CIEdiagram_CreateFcn(~, ~, ~)
-
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function instructions_CreateFcn(~, ~, ~)
-
 % --- Executes on button press in Browse.
 function Browse_Callback(hObject, ~, handles)
 
@@ -166,16 +158,12 @@ handles.nb_lines = num;
 
 guidata(hObject,handles)
 
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function nb_lines_CreateFcn(~, ~, ~)
-
 % --- Executes during object creation, after setting all properties.
 function xytable_CreateFcn(hObject, ~, ~)
 
 % html code to change the font style of the column name, which is not
 % possible with matlab
-ColumnNames = { ....
+ColumnNames = { ...
     '<html><b><center /><font face="Tahoma" size=4>Label</font><b></html>', ...
     '<html><b><center /><font face="Tahoma" size=4>x</font><b></html>', ...
     '<html><b><center /><font face="Tahoma" size=4>y</font><b></html>', ...
@@ -355,10 +343,6 @@ end
 
 guidata(hObject, handles)
 
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function Marker_symbol_CreateFcn(~, ~, ~)
-
 % --- Executes on selection change in Marker_symbol.
 function Marker_symbol_Callback(hObject, ~, handles)
 
@@ -367,11 +351,6 @@ handles.select_symbol = 1;
 
 guidata(hObject,handles);
 
-
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function Marker_color_CreateFcn(~, ~, ~)
-
 % --- Executes on selection change in Marker_color.
 function Marker_color_Callback(hObject, ~, handles)
 
@@ -379,10 +358,6 @@ function Marker_color_Callback(hObject, ~, handles)
 handles.select_color = 1;
 
 guidata(hObject,handles);
-
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function Marker_size_CreateFcn(~, ~, ~)
 
 % --- Executes on slider movement.
 function Marker_size_Callback(hObject, ~, handles)
@@ -395,10 +370,6 @@ set(handles.slider_value,'String',num2str(size));
 handles.select_size = 1;
 
 guidata(hObject, handles)
-
-% This line of code is just for minimizing compile warnings
-% because the object properties are already stored in gui
-function slider_value_CreateFcn(~, ~, ~)
 
 % --- Executes on button press in Locate.
 function Locate_Callback(hObject, ~, handles)
